@@ -10,13 +10,16 @@ export function SelectedProfiles() {
   );
 
   return (
-    <div className="border rounded-lg p-4 bg-white">
-      <h2 className="font-semibold text-lg mb-3">
+    <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-5 sticky top-24">
+      <h2 className="text-lg font-semibold text-gray-900 mb-4">
         Selected Profiles ({selectedProfiles.length})
+        <p className="text-sm text-gray-500 mb-4">
+            Saved influencers for your campaign
+        </p>
       </h2>
 
       {selectedProfiles.length === 0 ? (
-        <p className="text-gray-500 text-sm">
+        <p className="text-gray-400 text-sm text-center py-6">
           No profiles selected
         </p>
       ) : (
@@ -24,7 +27,7 @@ export function SelectedProfiles() {
           {selectedProfiles.map((profile) => (
             <div
               key={profile.user_id}
-              className="flex items-center justify-between border rounded p-2"
+              className="flex items-center justify-between rounded-lg border border-gray-200 p-3 hover:bg-gray-50 transition-colors"
             >
               <div>
                 <p className="font-medium">
@@ -39,7 +42,7 @@ export function SelectedProfiles() {
                 onClick={() =>
                   removeProfile(profile.user_id)
                 }
-                className="px-2 py-1 text-sm bg-red-500 text-white rounded"
+                className="px-3 py-1.5 text-xs font-medium bg-red-50 text-red-600 rounded-lg hover:bg-red-100 transition-colors"
               >
                 Remove
               </button>

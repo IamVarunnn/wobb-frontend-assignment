@@ -72,7 +72,7 @@ export function ProfileDetailPage() {
   }
 
   const user: FullUserProfile = profileData.data.user_profile;
-
+   
   return (
     <Layout title={user.fullname}>
       <Link to="/" className="text-sm text-blue-600 mb-4 inline-block">
@@ -82,7 +82,8 @@ export function ProfileDetailPage() {
       <div className="flex gap-6 items-start text-left max-w-2xl mx-auto">
         <img
           src={user.picture}
-          className="w-24 h-24 rounded-full border"
+          alt={user.fullname}
+          className="w-24 h-24 rounded-full border object-cover"
         />
         <div className="flex-1">
           <h2 className="text-xl font-bold">
@@ -111,6 +112,7 @@ export function ProfileDetailPage() {
                   : "N/A"}
               </div>
             </div>
+             
             {user.posts_count !== undefined && (
               <div className="border p-2 rounded">
                 <div className="text-gray-500">Posts</div>
@@ -146,13 +148,16 @@ export function ProfileDetailPage() {
                   {formatEngagementRate(user.engagement_rate)}
                 </div>
               </div>
+              
             )}
+            
           </div>
 
           {user.url && (
             <a
               href={user.url}
               target="_blank"
+              rel="noopener noreferrer"
               className="inline-block mt-4 text-blue-600 text-sm"
             >
               View on platform →
@@ -173,6 +178,7 @@ export function ProfileDetailPage() {
           </button>
         </div>
       </div>
+      
     </Layout>
   );
 }

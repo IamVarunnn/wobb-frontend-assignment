@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import type { Platform } from "@/types";
 import { Layout } from "@/components/Layout";
 import { PlatformFilter } from "@/components/PlatformFilter";
@@ -9,20 +9,29 @@ import { SelectedProfiles } from "@/components/SelectedProfiles";
 export function SearchPage() {
   const [platform, setPlatform] = useState<Platform>("instagram");
   const [searchQuery, setSearchQuery] = useState("");
-  const [clickCount, setClickCount] = useState(0);
+   
 
-  const allProfiles = extractProfiles(platform);
-  const filtered = filterProfiles(allProfiles, searchQuery);
+  const allProfiles = useMemo(
+    () => extractProfiles(platform),
+    [platform]
+  );
 
-  const handleProfileClick = (username: string) => {
-    setClickCount(clickCount + 1);
-    console.log("Clicked profile:", username, "total clicks:", clickCount);
-  };
+  const filtered = useMemo(
+    () => filterProfiles(allProfiles, searchQuery),
+    [allProfiles, searchQuery]
+  );
+
+   const handleProfileClick = () => {};
 
   return (
     <Layout title="Find Influencers">
-      <p className="text-gray-500 mb-4 text-sm">
-        Browse top creators across social platforms
+      <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6 mb-8">
+      <h2 className="text-3xl font-bold text-gray-900 mb-2">
+        Discover Influencers
+      </h2>
+
+      <p className="text-gray-500 mb-6">
+        Search and shortlist creators across Instagram, YouTube and TikTok.
       </p>
 
       <PlatformFilter
@@ -35,9 +44,10 @@ export function SearchPage() {
         onSearchChange={setSearchQuery}
       />
 
-      <p className="text-xs text-gray-400 mb-2">
-        Showing {filtered.length} of {allProfiles.length} on {platform}
+      <p className="text-sm text-gray-500 mt-4">
+        Showing {filtered.length} of {allProfiles.length} creators on {platform}
       </p>
+    </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
       <div className="lg:col-span-2">

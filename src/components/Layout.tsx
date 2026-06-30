@@ -1,3 +1,4 @@
+
 import type { ReactNode } from "react";
 import { Link } from "react-router-dom";
 
@@ -8,14 +9,27 @@ interface LayoutProps {
 
 export function Layout({ children, title }: LayoutProps) {
   return (
-    <div className="p-4 min-h-screen">
-      <header className="mb-6 border-b pb-4">
-        <Link to="/" className="text-xl font-semibold text-gray-900">
-          Influencer Search
-        </Link>
-        {title && <h1 className="text-2xl mt-2">{title}</h1>}
+    <div className="min-h-screen bg-gray-50">
+      <header className="bg-white border-b sticky top-0 z-10">
+        <div className="max-w-7xl mx-auto px-6 py-4">
+          <Link
+            to="/"
+            className="text-2xl font-bold text-gray-900"
+          >
+            Influencer Search
+          </Link>
+
+          {title && (
+            <p className="text-gray-500 mt-1">
+              {title}
+            </p>
+          )}
+        </div>
       </header>
-      <main>{children}</main>
+
+      <main className="max-w-7xl mx-auto px-6 py-8">
+        {children}
+      </main>
     </div>
   );
 }
