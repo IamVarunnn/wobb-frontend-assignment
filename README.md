@@ -1,80 +1,149 @@
 # Wobb Frontend Assignment
 
-A starter influencer search application built with **React**, **TypeScript**, **Vite**, and **Tailwind CSS**. This project is intentionally left in a rough-but-working state for candidates to improve.
+## Overview
 
-## Getting Started
+This project enhances the provided influencer search application built with React, TypeScript, Vite, and Tailwind CSS.
+
+The application allows users to discover influencers across Instagram, YouTube, and TikTok, view detailed profile information, and manage a persistent shortlist of selected creators.
+
+---
+
+## Live Demo
+
+(Add Vercel URL here after deployment)
+
+---
+
+## Features Implemented
+
+### State Management (Zustand)
+
+- Implemented Zustand for selected profile management
+- Added persistence using Zustand Persist Middleware
+- State survives page refreshes
+
+### Select Profile & Add to List
+
+- Add profiles from dashboard cards
+- Add profiles from profile detail page
+- Prevent duplicate entries
+- View selected profiles in a dedicated sidebar
+- Remove profiles from the selected list
+- Persistent storage using localStorage
+
+### UI/UX Improvements
+
+- Redesigned application layout
+- Improved profile cards with modern styling
+- Added selected profiles panel
+- Improved spacing and visual hierarchy
+- Enhanced dashboard experience
+- Improved profile detail page presentation
+
+### Bug Fixes & Improvements
+
+- Removed unused deprecated dependency (`react-beautiful-dnd`)
+- Fixed search filtering behavior
+- Added accessibility improvements using image alt attributes
+- Added security improvements using `rel="noopener noreferrer"`
+- Removed unused/debug code
+- Improved component organization
+
+### Performance Optimizations
+
+- Added `useMemo` for profile extraction
+- Added `useMemo` for filtering logic
+- Reduced unnecessary recalculations during rendering
+
+---
+
+## Technologies Used
+
+- React
+- TypeScript
+- Vite
+- Tailwind CSS
+- Zustand
+- React Router DOM
+
+---
+
+## Installation
 
 ```bash
 npm install
 npm run dev
 ```
 
-Open [http://localhost:5173](http://localhost:5173) to view the app.
+---
 
-## What's Included
+## Build
 
-- **Search / Dashboard** — filter influencers by platform (Instagram, YouTube, TikTok) and search by username or full name
-- **Profile Details** — click a profile to view extended data loaded from individual JSON files
-- **Routing** — `react-router-dom` with `/` (search) and `/profile/:username` (details)
+```bash
+npm run build
+```
 
-Sample data lives in:
+---
 
-- `src/assets/data/search/` — platform search results (10 profiles each)
-- `src/assets/data/profiles/` — detailed profile JSON per username
+## Lint
 
-## How to Submit
+```bash
+npm run lint
+```
 
-1. **Download or clone** this starter project to your machine.
-2. **Create a new repository** on your own GitHub account. Do not fork the original assignment repo — push your work to a repo you own.
-3. Complete the tasks below and push your changes to that repository.
-4. **Share the public GitHub repository URL** with us as your submission.
+---
 
-### Deadline (strict)
+## Project Structure
 
-- **Due:** **2 July 2026, 2:00 PM IST** (Indian Standard Time, UTC+5:30)
-- **Any git commits made after this deadline will disqualify your submission.** We will only consider the repository state as of the deadline; late commits will not be reviewed.
-- Make sure your final work is pushed **before** the cutoff.
+```txt
+src
+├── components
+├── pages
+├── store
+├── types
+├── utils
+└── assets
+```
 
-## AI Usage
+---
 
-You may use any AI tools (Cursor, ChatGPT, Claude, GitHub Copilot, etc.). We are evaluating your final solution and engineering decisions.
+## Assumptions
 
-## Your Tasks
+- Selected profiles are persisted locally using browser localStorage.
+- Duplicate profiles should not be added to the selected list.
+- Profile data is loaded from local JSON files provided in the starter project.
 
-Complete the following as part of your submission:
+---
 
-1. **Find and fix all bugs and quality issues** — the codebase contains intentional bugs and quality issues. Identify and resolve them.
+## Trade-offs
 
-2. **Completely redesign the UI/UX** — replace the basic layout with a polished, modern interface. Focus on usability, visual hierarchy, and delight.
+- Local persistence was chosen over backend storage since no backend service was provided.
+- Performance optimizations focus on memoization of filtering and profile extraction.
+- UI improvements prioritize usability and clarity over introducing a large UI framework.
 
-3. **Replace React Context with Zustand** — when you implement state management for the selected list, use [Zustand](https://github.com/pmndrs/zustand) instead of React Context.
+---
 
-4. **Implement "Select profile & Add to List"** — the disabled "Add to List" button is a stub. Build the full feature:
-   - Select / add profiles to a persistent list
-   - View and manage the selected list
-   - Handle duplicates appropriately
+## Future Improvements
 
-5. **Improve code quality and project structure** — refactor as needed, add proper types, and follow React best practices.
+- Unit and integration testing
+- Advanced filtering options
+- Sorting functionality
+- Infinite scrolling / pagination
+- Dark mode support
+- Backend integration for persistent user lists
 
-6. **Optimize performance** — apply sensible optimizations where appropriate.
+---
 
-7. **Use any libraries you need** — you are not limited to the current stack. Choose tools that help you deliver a great result (UI kits, state managers, testing libraries, etc.).
+## Validation
 
-## Scripts
+✅ npm run build
 
-| Command        | Description              |
-| -------------- | ------------------------ |
-| `npm run dev`  | Start development server |
-| `npm run build`| Production build         |
-| `npm run lint` | Run ESLint               |
+✅ npm run lint
 
-## Submission Notes
+✅ Responsive layout
 
-- Document any assumptions or trade-offs in your README
-- Ensure `npm run build` passes before submitting
-- Focus on demonstrating your judgment — not every possible feature needs to be built, but the core assignment items should be addressed thoughtfully
-- Double-check that your repo is public (or that we have access) and that the link is included in your submission
-- Please make meaningful commits throughout your work. We may review your commit history.
-- **Bonus:** Deploying the app (e.g. Vercel, Netlify, GitHub Pages) is optional but will be considered a plus — include the live URL in your submission if you do
+✅ Persistent selected profiles
 
-Good luck!
+✅ Duplicate prevention
+
+✅ Zustand state management
