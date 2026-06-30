@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project enhances the provided influencer search application built with React, TypeScript, Vite, and Tailwind CSS.
+This project enhances the provided Influencer Search application built with React, TypeScript, Vite, and Tailwind CSS.
 
 The application allows users to discover influencers across Instagram, YouTube, and TikTok, view detailed profile information, and manage a persistent shortlist of selected creators.
 
@@ -10,7 +10,7 @@ The application allows users to discover influencers across Instagram, YouTube, 
 
 ## Live Demo
 
-(Add Vercel URL here after deployment)
+https://wobb-frontend-assignment-red.vercel.app/
 
 ---
 
@@ -18,9 +18,9 @@ The application allows users to discover influencers across Instagram, YouTube, 
 
 ### State Management (Zustand)
 
-- Implemented Zustand for selected profile management
+- Implemented Zustand for global state management
 - Added persistence using Zustand Persist Middleware
-- State survives page refreshes
+- Selected profiles remain available after page refresh
 
 ### Select Profile & Add to List
 
@@ -34,11 +34,12 @@ The application allows users to discover influencers across Instagram, YouTube, 
 ### UI/UX Improvements
 
 - Redesigned application layout
-- Improved profile cards with modern styling
-- Added selected profiles panel
-- Improved spacing and visual hierarchy
-- Enhanced dashboard experience
-- Improved profile detail page presentation
+- Improved dashboard visual hierarchy
+- Modernized profile cards
+- Added selected profiles management panel
+- Improved spacing and responsiveness
+- Enhanced profile detail experience
+- Better user feedback for selected profiles
 
 ### Bug Fixes & Improvements
 
@@ -47,12 +48,12 @@ The application allows users to discover influencers across Instagram, YouTube, 
 - Added accessibility improvements using image alt attributes
 - Added security improvements using `rel="noopener noreferrer"`
 - Removed unused/debug code
-- Improved component organization
+- Improved component structure and maintainability
 
 ### Performance Optimizations
 
 - Added `useMemo` for profile extraction
-- Added `useMemo` for filtering logic
+- Added `useMemo` for profile filtering
 - Reduced unnecessary recalculations during rendering
 
 ---
@@ -68,11 +69,32 @@ The application allows users to discover influencers across Instagram, YouTube, 
 
 ---
 
+## Project Structure
+
+```txt
+src
+├── assets
+├── components
+├── pages
+├── store
+├── types
+├── utils
+└── App.tsx
+```
+
+---
+
 ## Installation
 
 ```bash
 npm install
 npm run dev
+```
+
+Open:
+
+```txt
+http://localhost:5173
 ```
 
 ---
@@ -93,33 +115,20 @@ npm run lint
 
 ---
 
-## Project Structure
-
-```txt
-src
-├── components
-├── pages
-├── store
-├── types
-├── utils
-└── assets
-```
-
----
-
 ## Assumptions
 
-- Selected profiles are persisted locally using browser localStorage.
+- Selected profiles are stored locally using browser localStorage.
 - Duplicate profiles should not be added to the selected list.
 - Profile data is loaded from local JSON files provided in the starter project.
+- No backend service was required for this assignment.
 
 ---
 
 ## Trade-offs
 
-- Local persistence was chosen over backend storage since no backend service was provided.
-- Performance optimizations focus on memoization of filtering and profile extraction.
-- UI improvements prioritize usability and clarity over introducing a large UI framework.
+- Zustand was chosen because it provides lightweight global state management with minimal boilerplate.
+- Local persistence was implemented instead of backend storage since no backend API was provided.
+- Performance improvements focus on memoization and avoiding unnecessary recalculations.
 
 ---
 
@@ -140,10 +149,14 @@ src
 
 ✅ npm run lint
 
-✅ Responsive layout
+✅ Zustand state management
 
 ✅ Persistent selected profiles
 
 ✅ Duplicate prevention
 
-✅ Zustand state management
+✅ Responsive dashboard layout
+
+✅ Add / Remove profile functionality
+
+✅ Deployed on Vercel
